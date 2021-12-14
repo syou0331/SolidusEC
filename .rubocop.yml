@@ -18,3 +18,4 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - '**/Gemfile'
+    - '**/spec/spec_helper.rb'
