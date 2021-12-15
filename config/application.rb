@@ -52,7 +52,6 @@ module Potepanec
     config.generators.javascripts    = false
     config.generators.helper         = false
 
-    #以下変更箇所
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: false,
