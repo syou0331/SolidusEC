@@ -9,11 +9,10 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
 
   scenario "ページタイトルが正常なこと" do
     expect(page).to have_title(product.name + " - " + "BIGBAG Store")
+    expect(page).to have_selector ".page-title h2", text: product.name
   end
 
   scenario "ページ表示が正常なこと" do
-    expect(page).to have_selector ".page-title h2", text: product.name
-    expect(page).to have_selector ".col-xs-6 h2", text: product.name
     expect(page).to have_selector ".media-body h2", text: product.name
     expect(page).to have_selector ".media-body h3", text: product.display_price
     expect(page).to have_selector ".media-body p", text: product.description
