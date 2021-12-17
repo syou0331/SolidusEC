@@ -59,6 +59,5 @@ module Potepanec
       helper_specs: false,
       routing_specs: false
     end
-    
   end
 end
