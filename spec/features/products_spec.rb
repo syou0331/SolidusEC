@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature "Get /potepan/products/:id", type: :feature do
-  given(:product) { create(:product) }
-  given(:image) { create(:image) }
+  let!(:product) { create(:product) }
+  let!(:image) { create(:image) }
 
   background do
     visit potepan_product_path(product.id)
     product.images << image
-
   end
 
   scenario "ページタイトルが正常なこと" do
