@@ -8,7 +8,7 @@ RSpec.describe "Potepan::ProductsController", type: :request do
       get potepan_product_url(id: product.id)
     end
 
-    example "レスポンスが正常なこと" do
+    example "レスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
 
