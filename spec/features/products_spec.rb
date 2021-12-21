@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature "Get /potepan/products/:id", type: :feature do
-  let(:product) { create(:product) }
+  given(:product) { create(:product) }
+  given(:image) { create(:image) }
 
   background do
-    visit potepan_product_url(id: product.id)
+    visit potepan_product_path(product.id)
+    product.images << image
+
   end
 
   scenario "ページタイトルが正常なこと" do
@@ -12,11 +15,16 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
     expect(page).to have_selector ".page-title h2", text: product.name
   end
 
-  scenario "ページ表示が正常なこと" do
+  scenario "表示テキストが正常なこと" do
     expect(page).to have_selector ".media-body h2", text: product.name
     expect(page).to have_selector ".media-body h3", text: product.display_price
     expect(page).to have_selector ".media-body p", text: product.description
-    expect(page).to have_content product.images[0]
+  end
+
+  scenario "表示画像が正常なこと" do
+    product.images.each do |img|
+      expect(page).to have_selector("img[src$='#{img.attachment_file_name}']")
+    end
   end
 
   scenario "「Home」へのリンクが正常なこと" do
