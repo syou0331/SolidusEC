@@ -21,7 +21,7 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
   end
 
   scenario "画像が表示されること" do
-    product.images.each do |img|
+    product.images.all? do |img|
       expect(page).to have_selector("img[src$='#{img.attachment_file_name}']")
     end
   end
