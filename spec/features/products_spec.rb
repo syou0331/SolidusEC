@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Get /potepan/products/:id", type: :feature do
   let(:product) { create(:product) }
-  let!(:image) { create(:image) }
+  let(:image) { create(:image) }
 
   background do
     product.images << image
