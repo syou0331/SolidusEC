@@ -34,5 +34,9 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
     within("ul.navbar-right") do
       expect(page).to have_link "Home", href: potepan_path
     end
+
+    within("div.navbar-header") do
+      expect(page).to have_link "", href: potepan_path
+    end
   end
 end
