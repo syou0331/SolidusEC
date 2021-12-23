@@ -5,8 +5,8 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
   let!(:image) { create(:image) }
 
   background do
-    visit potepan_product_path(product.id)
     product.images << image
+    visit potepan_product_path(product.id)
   end
 
   scenario "ページタイトルが表示されること" do
