@@ -20,7 +20,7 @@ RSpec.describe ApplicationHelper do
       end
     end
 
-    context "page_titleの値が文字列(test_title)場合" do
+    context "page_titleが文字列で与えられる場合" do
       let(:page_title) { "test_title" }
 
       example "「test_title - BIGBAG Store」を出力すること" do
