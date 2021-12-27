@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Potepan::ProductsController", type: :request do
-  describe "GET /potepan/products/:id(商品詳細ページ)" do
+  describe "GET /potepan/products/:id" do
     let(:product) { create(:product) }
 
     before do
