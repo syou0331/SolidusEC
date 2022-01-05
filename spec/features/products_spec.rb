@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.feature "Get /potepan/products/:id", type: :feature do
   let(:product) { create(:product) }
   let(:image) { create(:image) }
+  let(:taxon) { create(:taxon) }
 
   background do
     product.images << image
+    product.taxons << taxon
     visit potepan_product_path(product.id)
   end
 
@@ -38,5 +40,9 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
     within("div.navbar-header") do
       expect(page).to have_link "", href: potepan_path
     end
+  end
+
+  scenario "「一覧ページへ戻る」へリンクされていること" do
+    expect(page).to have_link "一覧ページへ戻る", href: potepan_category_path(product.taxons.first.id)
   end
 end
