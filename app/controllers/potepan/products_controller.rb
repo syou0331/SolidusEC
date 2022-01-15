@@ -1,5 +1,5 @@
 class Potepan::ProductsController < ApplicationController
-  DISPLAY_LIMIT = 4
+  DISPLAY_LIMIT = 4 #関連商品の最大表示数
 
   def show
     @product = Spree::Product.find(params[:id])
