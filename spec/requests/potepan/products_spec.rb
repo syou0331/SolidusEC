@@ -5,8 +5,8 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     let(:taxon) { create(:taxon) }
     let(:product) { create(:product, taxons: [taxon]) }
     let(:related_products_list) { create_list(:product, 4, taxons: [taxon]) }
-    let(:fifth_related_product) { create(:product, taxons:[taxon], price: "12.34")}
-    let(:related_products) { [related_products_list,fifth_related_product]}
+    let(:fifth_related_product) { create(:product, taxons: [taxon], price: "12.34") }
+    let(:related_products) { [related_products_list, fifth_related_product] }
 
     before do
       related_products.flatten!
