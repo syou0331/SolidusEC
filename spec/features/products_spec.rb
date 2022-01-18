@@ -4,10 +4,12 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
   let(:product) { create(:product) }
   let(:image) { create(:image) }
   let(:taxon) { create(:taxon) }
+  let(:related_products_list) { create_list(:product, 4, taxons: [taxon]) }
 
   background do
     product.images << image
     product.taxons << taxon
+    related_products_list.all? { |related_product| related_product.images << create(:image) }
     visit potepan_product_path(product.id)
   end
 
@@ -28,6 +30,12 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
     end
   end
 
+  scenario "関連商品の各要素が4つ分表示されること" do
+    expect(page).to have_selector('.productBox', count: 4)
+    expect(page).to have_selector('.productImage', count: 4)
+    expect(page).to have_selector('.productCaption', count: 4)
+  end
+
   scenario "「Home」へリンクされていること" do
     within("ol") do
       expect(page).to have_link "Home", href: potepan_path
@@ -44,5 +52,11 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
 
   scenario "「一覧ページへ戻る」へリンクされていること" do
     expect(page).to have_link "一覧ページへ戻る", href: potepan_category_path(product.taxons.first.id)
+  end
+
+  scenario "関連商品が、対応する商品詳細ページへリンクされていること" do
+    within(".productsContent") do
+      expect(page).to have_link "", href: potepan_product_path(related_products_list.first.id)
+    end
   end
 end
