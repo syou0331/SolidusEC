@@ -56,7 +56,7 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
 
   scenario "関連商品が、対応する商品詳細ページへリンクされていること" do
     within(".productsContent") do
-      expect(page).to have_link "", href: potepan_product_path(related_products_list.first.id)
+      expect(page).to have_link "#{related_products_list.first.name}", href: potepan_product_path(related_products_list.first.id)
     end
   end
 end
