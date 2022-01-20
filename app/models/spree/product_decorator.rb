@@ -1,10 +1,9 @@
 module Spree::ProductDecorator
-  def related_products(display_limit)
+  def related_products
     Spree::Product.
       in_taxons(taxons).
       where.not(id: id).
-      distinct.
-      limit(display_limit)
+      distinct
   end
   Spree::Product.prepend self
 end
