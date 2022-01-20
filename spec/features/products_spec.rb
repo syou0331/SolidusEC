@@ -9,7 +9,7 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
   background do
     product.images << image
     product.taxons << taxon
-    related_products_list.all? { |related_product| related_product.images << create(:image) }
+    related_products_list.each { |related_product| related_product.images << create(:image) }
     visit potepan_product_path(product.id)
   end
 
