@@ -6,10 +6,9 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     let(:product) { create(:product, taxons: [taxon]) }
     let(:related_products_list) { create_list(:product, 4, taxons: [taxon]) }
     let(:fifth_related_product) { create(:product, taxons: [taxon], price: "12.34") }
-    let(:related_products) { [related_products_list, fifth_related_product] }
+    let(:related_products) { [related_products_list, fifth_related_product].flatten! }
 
     before do
-      related_products.flatten!
       related_products.all? { |related_product| related_product.images << create(:image) }
       get potepan_product_url(id: product.id)
     end
