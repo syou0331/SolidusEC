@@ -7,8 +7,11 @@ RSpec.describe Spree::ProductDecorator, type: :model do
   let!(:unrelated_product) { create(:product, taxons: [create(:taxon)]) }
   let(:duplicate_related_products) { related_products.push(related_products.first) }
 
-  it "関連商品が取得され、且つ関連しない商品は含まないこと" do
+  it "関連商品が取得されること" do
     related_products.all? { |related_product| expect(product.related_products).to include related_product }
+  end
+
+  it "関連しない商品は含まないこと" do
     expect(product.related_products).not_to include unrelated_product
   end
 
