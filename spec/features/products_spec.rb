@@ -30,10 +30,8 @@ RSpec.feature "Get /potepan/products/:id", type: :feature do
     end
   end
 
-  scenario "関連商品の各要素が4つ分表示されること" do
+  scenario "関連商品が4つ分表示されること" do
     expect(page).to have_selector('.productBox', count: 4)
-    expect(page).to have_selector('.productImage', count: 4)
-    expect(page).to have_selector('.productCaption', count: 4)
   end
 
   scenario "「Home」へリンクされていること" do
