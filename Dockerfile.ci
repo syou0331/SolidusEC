@@ -1,6 +1,6 @@
 # -*- mode: dockerfile -*-
 FROM ruby:2.7.3-buster
-
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29
 RUN apt-get update                                                                                                                      \
   && apt-get install                                                                                                                    \
     openssl                                                                                                                             \
